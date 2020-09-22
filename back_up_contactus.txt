@@ -1,0 +1,92 @@
+	<script>
+		var xhr = new XMLHttpRequest();
+		function getstat(){
+			console.log("in");
+			name = document.getElementById("name");
+			location = document.getElementById("location");
+			email = document.getElementById("email");
+			phone = document.getElementById("phone");
+			feedback = document.getElementById("feedback");
+
+
+			xhr.open("post","setfeedback.php");
+			xhr.onreadystatechange=show;
+			/*xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.send("room="+room.value+"&type="+type.value);*/
+			
+			var fd =  new FormData();
+			fd.append("name",name.value);
+			fd.append("location",location.value);
+			fd.append("email",email.value);
+			fd.append("phone",phone.value);
+			fd.append("feedback",feedback.value);
+			xhr.send(fd);
+			console.log(name.value);
+		}
+		function show(){ //show.call(xhr);
+			if(this.readyState==4 && this.status==200){
+				stat = document.getElementById("stat");
+				stat.innerHTML=this.responseText;
+			}
+		}
+	</script>
+
+
+
+
+
+
+
+	<div class="col-sm-12 col-md-8">
+					<h3><b>Send Us your feedback</b></h3>
+					<p class="mb-30 mr-100 mr-sm-0">We’d love to hear from you</p>
+					<form  method="post" class="form-block form-bold form-mb-20 form-h-35 form-brdr-b-grey pr-50 pr-sm-0" onsubmit="getstat()">
+						<div class="row">
+						
+							<div class="col-sm-6">
+								<p class="color-ash">Full Name*</p>
+								<div class="pos-relative">
+									<input class="pr-20" type="text" id="name">
+									
+								</div><!-- pos-relative -->
+							</div><!-- col-sm-6 -->
+							
+							<div class="col-sm-6">							
+								<p class="color-ash">Email*</p>
+								<div class="pos-relative">
+									<input class="pr-20" type="email" id="email">
+									<i class="dplay-none abs-tbr lh-35 font-13 color-green ion-android-done"></i>
+								</div><!-- pos-relative -->
+							</div><!-- col-sm-6 -->
+							
+							<div class="col-sm-6">	
+								<p class="color-ash">Your Phone*</p>
+								<div class="pos-relative">
+									<input class="pr-20" type="text" id="phone">
+									<i class="dplay-none abs-tbr lh-35 font-13 color-green ion-android-done"></i>
+								</div><!-- pos-relative -->
+							</div><!-- col-sm-6 -->
+							
+							<div class="col-sm-6">	
+								<p class="color-ash">Location*</p>
+								<div class="pos-relative">
+									<input class="pr-20" type="text" id="location">
+									<i class="dplay-none abs-tbr lh-35 font-13 color-green ion-android-done"></i>
+								</div><!-- pos-relative -->
+							</div><!-- col-sm-6 -->
+							
+							<div class="col-sm-12">
+								<div class="pos-relative pr-80">
+									<p class="color-ash">Feedback*</p>
+									<h4><b>Tell us your feedback</b></h4>
+									<textarea class="mb-0" id = "feedback"></textarea>
+									<button class="abs-br font-20 plr-15 btn-fill-primary" onclick="getstat()"><i class="ion-ios-paperplane"></i></button>
+								</div><!-- pos-relative -->
+							</div><!-- col-sm-6 -->
+							
+						</div><!-- row -->
+						
+					</form>
+					
+				</div><!-- col-md-6 -->
+			

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+	
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	
+	title:{
+		text:"Loss Incurred"
+	},
+	axisX:{
+		interval: 1
+	},
+	axisY2:{
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+		title: "Units in 10000"
+	},
+	data: [{
+		type: "bar",
+		name: "Drugs",
+		axisYType: "secondary",
+		color: "#014D65",
+		dataPoints: [
+			{ y: 3, label: "Riboflavin" },
+			{ y: 7, label: "Aldesleukin" },
+			{ y: 5, label: "buprenex" },
+			{ y: 9, label: "Zoster vaccine Live" },
+			{ y: 7, label: "Exubera" },
+			{ y: 7, label: "Avonex Pen" },
+			{ y: 9, label: "Q-Tapp_DM" },
+			{ y: 8, label: "Broankaid" },
+			{ y: 11, label: "Sterapred" },
+			{ y: 15, label: "Medrox" },
+			{ y: 12, label: "Luminax" },
+			{ y: 15, label: "Amethyst" },
+			
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 30px auto;"></div>
+<script src="./canvasjs.min.js"></script>
+</body>
+</html>
